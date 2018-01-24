@@ -36,7 +36,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.1.0",
+    "@angular/cli": "1.6.5",
     "@angular/compiler-cli": "4.1.3",
     "@types/fullcalendar": "2.7.40",
     "@types/jasmine": "2.5.38",
@@ -47,7 +47,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "codelyzer": "~3.0.1",
-    "electron": "1.7.5",
+    "electron": "1.7.11",
     "electron-rebuild": "^1.6.0",
     "electron-reload": "^1.2.2",
     "gulp": "^3.9.1",
