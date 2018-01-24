@@ -5,6 +5,8 @@ let win, dev, hiddenWin;
 const args = process.argv.slice(1);
 dev = args.some(val => val === "--dev");
 
+require('./server/index.js');
+
 if (dev) {
   require('electron-reload')(__dirname, {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
@@ -24,14 +26,9 @@ function createWindow() {
     height: size.height
   });
 
-  // hiddenWin = new BrowserWindow({
-  //   show: false
-  // });
-
   // and load the index.html of the app.
   win.loadURL('file://' + __dirname + '/index.html');
 
-  
   // Open the DevTools.
   if (dev) {
     win.webContents.openDevTools();

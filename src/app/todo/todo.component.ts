@@ -40,8 +40,7 @@ export class TodoComponent implements OnInit {
     .then(result => {
       if (Object.keys(result).length !== 0){
         this.todos.push(result);
-        this.filterStatus(this.path);
-        this.calculateActiveTasks();
+        this.update();
       }
     });
   }
@@ -49,28 +48,25 @@ export class TodoComponent implements OnInit {
   onToggleTodoComplete(todo: Todo) {
     this.todoService.toggleTodoComplete(todo)
     .then(result => {
-      this.filterStatus(this.path);
-      this.calculateActiveTasks()
+      this.getTodos(this.path)
     });
   }
 
   onRemoveTodo(todo: Todo) {
-    this.todoService.deleteTodoById(todo.id)
+    this.todoService.deleteTodoById(todo._id)
     .then(result => {
       if (Object.keys(result).length === 0){
-        this.todos = this.todos.filter(item => item.id !== todo.id);
-        this.filterStatus(this.path);
-        this.calculateActiveTasks();
+        this.todos = this.todos.filter(item => item._id !== todo._id);
+        this.update();
       }
     });
   }
 
   getTodos(filter = 'all') {
-    this.todoService.getAllTodos()
+    return this.todoService.getAllTodos()
     .then(todos => {
       this.todos = todos.map(todo => todo);
-      this.filterStatus(filter);
-      this.calculateActiveTasks();
+      this.update();
     });
   }
 
@@ -100,11 +96,14 @@ export class TodoComponent implements OnInit {
     this.todos = this.todos.filter(todo => !todo.complete);
     this.todoService.deleteCompleted().then(result => {
       if (Object.keys(result).length === 0){
-        this.filterStatus(this.path);
-        this.calculateActiveTasks();
+        this.update();
         this.router.navigate(['/all']);
       }
     });
   }
 
+  update() {
+    this.filterStatus(this.path);
+    this.calculateActiveTasks();
+  }
 }

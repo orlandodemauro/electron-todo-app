@@ -11,8 +11,10 @@ import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.com
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { LoggedInGuard } from './logged-in.guard';
 
+// electron service
+import { ElectronService } from './providers/electron.service';
+
 // used to create fake backend
-import { fakeBackendProvider } from '../shared/fake-backend/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { TodoComponent } from './todo/todo.component';
@@ -40,9 +42,9 @@ import { LoginComponent } from './login/login.component';
     TodoService,
     LoggedInGuard,
     // providers used to create fake backend
-    fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    ElectronService,
   ],
   bootstrap: [AppComponent]
 })

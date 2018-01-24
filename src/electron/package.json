@@ -2,5 +2,17 @@
   "name": "electron-todo-app",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "main.js"
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "npm run rebuild || npm run rebuildwin",
+    "rebuild": "../node_modules/.bin/electron-rebuild",
+    "rebuildwin": ".\\..\\node_modules\\.bin\\electron-rebuild"
+  },
+  "dependencies": {
+    "leveldown": "^1.7.2",
+    "linvodb3": "^3.25.0",
+    "ipc-promise": "0.1.4",
+    "electron": "1.7.5",
+    "bluebird": "3.5.1"
+  }
 }
