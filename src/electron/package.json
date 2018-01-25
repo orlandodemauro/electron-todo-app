@@ -4,9 +4,7 @@
   "license": "MIT",
   "main": "main.js",
   "scripts": {
-    "postinstall": "npm run rebuild || npm run rebuildwin",
-    "rebuild": "../node_modules/.bin/electron-rebuild",
-    "rebuildwin": ".\\..\\node_modules\\.bin\\electron-rebuild"
+    "postinstall": "cross-env ../node_modules/.bin/electron-rebuild"
   },
   "dependencies": {
     "leveldown": "^1.7.2",

@@ -13,6 +13,8 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 // electron service
 import { ElectronService } from './providers/electron.service';
 
+import { UtilsService } from './shared/utils.service';
+
 import { TodoComponent } from './todo/todo.component';
 
 import { Routing } from './app.routing';
@@ -35,6 +37,7 @@ import { Routing } from './app.routing';
   providers: [
     TodoService,
     ElectronService,
+    UtilsService,
   ],
   bootstrap: [AppComponent]
 })

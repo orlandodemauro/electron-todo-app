@@ -5,12 +5,15 @@ import 'rxjs/add/operator/toPromise';
 
 import {Todo} from './todo';
 
+import { UtilsService } from '../shared/utils.service';
+
 @Injectable()
 export class TodoService {
 
-  private apiUrl = 'http://localhost:3100/api';  // URL to web api
-  constructor(private http: Http) {
+  constructor(private http: Http, private utilsService: UtilsService) {
   }
+
+  private apiUrl = this.utilsService.get_api_url('api');  // URL to web api
 
   addTodo(todo: Todo): Promise<Todo> {
     return this.http.post(
@@ -23,7 +26,7 @@ export class TodoService {
   }
 
   deleteTodoById(_id: number): Promise<Object> {
-    return this.http.delete(`${this.apiUrl}/todos/${_id}`,)
+    return this.http.delete(`${this.apiUrl}/todos/${_id}`)
                .toPromise()
                .then(response => response.json() as Todo)
                .catch(this.handleError);
