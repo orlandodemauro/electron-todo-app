@@ -1,5 +1,5 @@
 "use strict";
-const { app } = require('electron');
+const { app } = require('electron').remote;
 import LinvoDB from "linvodb3";
 import fs from 'fs';
 

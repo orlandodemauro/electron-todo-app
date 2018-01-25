@@ -5,8 +5,6 @@ let win, dev, hiddenWin;
 const args = process.argv.slice(1);
 dev = args.some(val => val === "--dev");
 
-require('./server/index.js');
-
 if (dev) {
   require('electron-reload')(__dirname, {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
