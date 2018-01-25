@@ -13,13 +13,19 @@ gulp.task('es6 server', () => {
         .pipe(gulp.dest('dist/server'));
 });
 
+gulp.task('es6 shared', () => {
+    gulp.src('src/shared/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('dist/shared'));
+});
+
 gulp.task('electron', () => {
     gulp.src('src/electron/package.json')
         .pipe(gulp.dest('dist'));
 });
  
 gulp.task('watch', () => {
-    gulp.watch('./src/server/**/*.js', ['es6 server','es6 electron']);
+    gulp.watch('./src/server/**/*.js', ['es6 shared', 'es6 server','es6 electron']);
 });
  
-gulp.task('default', ['es6 electron','es6 server','electron',]);
+gulp.task('default', ['es6 shared', 'es6 electron','es6 server','electron',]);

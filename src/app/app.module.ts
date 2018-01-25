@@ -9,18 +9,14 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
-import { LoggedInGuard } from './logged-in.guard';
 
 // electron service
 import { ElectronService } from './providers/electron.service';
+import { UtilsService } from './shared/utils.service';
 
-// used to create fake backend
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions } from '@angular/http';
 import { TodoComponent } from './todo/todo.component';
 
 import { Routing } from './app.routing';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +26,6 @@ import { LoginComponent } from './login/login.component';
     TodoListHeaderComponent,
     TodoListItemComponent,
     TodoComponent,
-    LoginComponent
   ],
   imports: [
     Routing,
@@ -40,11 +35,8 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     TodoService,
-    LoggedInGuard,
-    // providers used to create fake backend
-    MockBackend,
-    BaseRequestOptions,
     ElectronService,
+    UtilsService,
   ],
   bootstrap: [AppComponent]
 })

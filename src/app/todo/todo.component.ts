@@ -23,11 +23,6 @@ export class TodoComponent implements OnInit {
     this.username = localStorage.getItem('username');
   }
 
-  logout() {
-    localStorage.removeItem('username');
-    this.router.navigate(['/login']);
-  }
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.path = params['status'];

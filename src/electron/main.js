@@ -1,11 +1,13 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 
-let win, dev, hiddenWin;
+let win, dev;
 const args = process.argv.slice(1);
 dev = args.some(val => val === "--dev");
 
-require('./server/index.js');
+require("./server/db");
+require('./server/routes');
+
 
 if (dev) {
   require('electron-reload')(__dirname, {
@@ -40,7 +42,6 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
-    hiddenWin = null;
   });
 }
 
