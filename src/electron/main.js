@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 
-let win, dev, hiddenWin;
+let win, dev, server;
 const args = process.argv.slice(1);
 dev = args.some(val => val === "--dev");
 
@@ -38,7 +38,6 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
-    hiddenWin = null;
   });
 }
 
@@ -62,10 +61,13 @@ try {
   });
 
   app.on('ready', function() {
+    // Start the server
+    server = require('./server/server.js');
     createWindow();
   });
   
   app.on('window-all-closed', () => {
+    server.close();
     app.quit();
   });
   

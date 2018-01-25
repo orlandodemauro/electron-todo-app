@@ -25,8 +25,4 @@ var port = process.env.PORT || 3100;
 app.use('/api', require('./routers'));
 
 // Start the server
-app.listen(port);
-
-console.log('Listening on port ' + port);
-
-module.exports = app;
+module.exports = app.listen(port);
