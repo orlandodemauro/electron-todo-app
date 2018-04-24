@@ -10,7 +10,7 @@
     "leveldown": "^1.7.2",
     "linvodb3": "^3.25.0",
     "ipc-promise": "0.1.4",
-    "electron": "1.7.11",
+    "electron": "1.8.4",
     "bluebird": "3.5.1"
   }
 }
