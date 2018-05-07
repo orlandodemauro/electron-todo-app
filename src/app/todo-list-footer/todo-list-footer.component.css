@@ -1,0 +1,16 @@
+.action-btn {
+    margin-left: 15px;
+    line-height: 20px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.footer {
+    height: 60px;
+}
+.filters{
+    position: relative;
+    margin-bottom: 10px;
+}
+.footer div {
+    position: relative;
+}

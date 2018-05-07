@@ -11,5 +11,9 @@
       <a [routerLink]="['/completed']" [class.selected]="path === 'completed'">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
+  <div>
+    <button class="action-btn" (click)="clearCompleted()">Clear completed</button>
+    <button class="action-btn" (click)="blockingAction()">Blocking</button>
+    <button class="action-btn" (click)="noBlockingAction()">No blocking</button>
+  </div>
 </footer>

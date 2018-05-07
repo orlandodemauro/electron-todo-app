@@ -20,11 +20,25 @@ export class TodoListFooterComponent {
   @Output()
   clear: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  blocking: EventEmitter<Todo> = new EventEmitter();
+
+  @Output()
+  noBlocking: EventEmitter<Todo> = new EventEmitter();
+
   constructor() {
   }
 
   clearCompleted() {
     this.clear.emit();
+  }
+
+  blockingAction() {
+    this.blocking.emit();
+  }
+
+  noBlockingAction() {
+    this.noBlocking.emit();
   }
 
 }

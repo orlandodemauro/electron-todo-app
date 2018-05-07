@@ -101,4 +101,15 @@ export class TodoComponent implements OnInit {
     this.filterStatus(this.path);
     this.calculateActiveTasks();
   }
+
+  blockingAction() {
+    this.todoService.blockingAction()
+    .then(result => console.log(result));
+  }
+
+  noBlockingAction() {
+    this.todoService.noBlockingAction()
+    .then(result => console.log(result));
+  }
+
 }

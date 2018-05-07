@@ -76,4 +76,21 @@ export class TodoService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+  
+  blockingAction(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/blocking`)
+               .toPromise()
+               .then(response => {
+                  return response.json();
+               })
+               .catch(this.handleError);
+  }
+  noBlockingAction(): Promise<Todo[]> {
+    return this.http.get(`${this.apiUrl}/no-blocking`)
+               .toPromise()
+               .then(response => {
+                  return response.json();
+               })
+               .catch(this.handleError);
+  }
 }

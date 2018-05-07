@@ -6,5 +6,7 @@
     [todos]="todos"
     [activeTasks]="activeTasks"
     [path]="path"
-    (clear)="clearCompleted($event)"></app-todo-list-footer>
+    (clear)="clearCompleted($event)"
+    (blocking)="blockingAction($event)"
+    (noBlocking)="noBlockingAction($event)"></app-todo-list-footer>
 </section>

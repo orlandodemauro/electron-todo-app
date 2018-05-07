@@ -11,6 +11,9 @@
     "linvodb3": "^3.25.0",
     "ipc-promise": "0.1.4",
     "electron": "1.8.4",
-    "bluebird": "3.5.1"
+    "bluebird": "3.5.1",
+    "crypto": "^1.0.1",
+    "electron-remote": "^1.2.0",
+    "async": "2.6.0"
   }
 }

@@ -1,5 +1,11 @@
+import { requireTaskPool } from 'electron-remote';
+import async from "async";
 import TodoService from '../service/todo';
 import utils from '../service/utils';
+import { work } from './work';
+
+const workAsync = requireTaskPool(require.resolve('./work'));
+
 
 // Endpoint POST /todos
 exports.addTodo = (req, res) => {
@@ -78,3 +84,24 @@ exports.updateTodo = (req, res) => {
         utils.error(res, {message: 'todo not updated' }, 400);
       });
 };
+
+// Endpoint GET /blocking
+exports.blocking = (req, res) => {
+  return utils.success(res, work());
+}
+
+// Endpoint GET /noBlocking
+exports.noBlocking = (req, res) => {
+  console.log('start work');
+
+  // `work` will get executed concurrently in separate background processes
+  // and resolved with a promise
+  async.times(12, (n, next) => {
+    workAsync.work().then(result => {
+      console.log(`work done in ${result} ms`);
+      next();
+    });
+  }, () => {
+    return utils.success(res, true);
+  });
+}
