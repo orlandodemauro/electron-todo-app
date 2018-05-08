@@ -18,6 +18,8 @@ import { TodoComponent } from './todo/todo.component';
 
 import { Routing } from './app.routing';
 
+import { NgxElectronModule } from 'ngx-electron';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { Routing } from './app.routing';
     Routing,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgxElectronModule
   ],
   providers: [
     TodoService,

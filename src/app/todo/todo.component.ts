@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Todo} from './todo';
 import {TodoService} from './todo.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {ElectronService} from 'ngx-electron';
 
 @Component({
   selector: 'app-todo',
@@ -18,7 +19,8 @@ export class TodoComponent implements OnInit {
   constructor(
     private todoService: TodoService, 
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private electronService : ElectronService
   ) {
     this.username = localStorage.getItem('username');
   }
@@ -100,5 +102,9 @@ export class TodoComponent implements OnInit {
   update() {
     this.filterStatus(this.path);
     this.calculateActiveTasks();
+  }
+
+  openExternal() {
+    this.electronService.shell.openExternal("www.meetup.com/ValenciaJS/");
   }
 }

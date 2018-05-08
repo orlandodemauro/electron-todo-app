@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "electron": "npm run electron:dev | gulp watch",
+    "electron": "npm run electron:dev",
     "electron:dev": "npm run build:electron:main && electron ./dist --dev",
     "electron:prod": "npm run build:prod && electron ./dist",
     "start:dev": "ng build --watch",
@@ -31,6 +31,7 @@
     "@angular/router": "4.3.1",
     "core-js": "^2.5.5",
     "ipc-promise": "0.1.4",
+    "ngx-electron": "1.0.3",
     "rxjs": "^5.5.10",
     "todomvc-app-css": "^2.1.1",
     "zone.js": "^0.8.26"

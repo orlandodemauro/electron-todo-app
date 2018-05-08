@@ -20,11 +20,18 @@ export class TodoListFooterComponent {
   @Output()
   clear: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  open: EventEmitter<Todo> = new EventEmitter();
+
   constructor() {
   }
 
   clearCompleted() {
     this.clear.emit();
+  }
+
+  openExternal() {
+    this.open.emit();
   }
 
 }

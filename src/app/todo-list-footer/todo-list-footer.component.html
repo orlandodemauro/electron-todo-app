@@ -10,6 +10,9 @@
     <li>
       <a [routerLink]="['/completed']" [class.selected]="path === 'completed'">Completed</a>
     </li>
+    <li>
+      <button class="open-btn" (click)="openExternal()">Open</button>
+    </li>
   </ul>
   <button class="clear-completed" (click)="clearCompleted()">Clear completed</button>
 </footer>

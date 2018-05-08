@@ -1,0 +1,8 @@
+.open-btn {
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+.open-btn:hover {
+    text-decoration: underline;
+}
