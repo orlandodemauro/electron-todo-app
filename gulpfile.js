@@ -24,8 +24,4 @@ gulp.task('electron', () => {
         .pipe(gulp.dest('dist'));
 });
  
-gulp.task('watch', () => {
-    gulp.watch('./src/server/**/*.js', ['es6 shared', 'es6 server','es6 electron']);
-});
- 
 gulp.task('default', ['es6 shared', 'es6 electron','es6 server','electron',]);
