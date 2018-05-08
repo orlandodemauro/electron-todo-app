@@ -1,8 +1,9 @@
 {
   "name": "electron-todo-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "main.js",
+  "description": "TODO electron app",
   "scripts": {
     "postinstall": "cross-env ../node_modules/.bin/electron-rebuild"
   },
@@ -11,6 +12,7 @@
     "linvodb3": "^3.25.0",
     "ipc-promise": "0.1.4",
     "electron": "1.8.4",
+    "electron-updater": "2.21.10",
     "bluebird": "3.5.1"
   }
 }

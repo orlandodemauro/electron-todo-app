@@ -1,5 +1,12 @@
-import { app, BrowserWindow, screen } from 'electron';
+
+import { app, BrowserWindow, screen, dialog } from 'electron';
 import * as path from 'path';
+
+import { autoUpdater } from "electron-updater";
+const server = 'http://localhost:1337';
+
+autoUpdater.setFeedURL(`${server}/update/${process.platform}_${process.arch}`);
+autoUpdater.autoDownload = false;
 
 let win, dev;
 const args = process.argv.slice(1);
@@ -66,12 +73,39 @@ try {
 
   app.on('ready', function() {
     createWindow();
+    if (!dev) {
+      autoUpdater.checkForUpdates();
+    }
   });
   
   app.on('window-all-closed', () => {
     app.quit();
   });
   
+  if (!dev) {
+    autoUpdater.on('update-available', () => {
+      dialog.showMessageBox({
+        type: 'question',
+        title: 'Update found',
+        message: 'Update found, do you want to update now?',
+        buttons: ['yes', 'No']
+      }, (buttonIndex) => {
+        if (buttonIndex === 0) {
+          autoUpdater.downloadUpdate();
+        }
+      })
+    });
+    
+    autoUpdater.on('update-downloaded', () => {
+      dialog.showMessageBox({
+         title: 'Install Updates',
+         message: 'Updates downloaded, application will be quit for update...'
+      }, (buttonIndex) => {
+          setImmediate(() => autoUpdater.quitAndInstall());
+      })
+    })
+  }
+
 } catch (e) {
   // Catch Error
   //throw e;
