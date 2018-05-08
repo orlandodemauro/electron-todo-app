@@ -34,7 +34,7 @@
     }
   },
   "scripts": {
-    "electron": "npm run electron:dev | gulp watch",
+    "electron": "npm run electron:dev",
     "electron:dev": "npm run build:electron:main && electron ./dist --dev",
     "electron:prod": "npm run build:prod && electron ./dist",
     "start:dev": "ng build --watch",
